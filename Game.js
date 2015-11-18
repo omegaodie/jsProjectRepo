@@ -1,21 +1,18 @@
 
 function Game(canvas){
+	this.now = 0;
+	this.then = 0;
 	ctx = canvas.getContext('2d');
-	this.playerimage = new Image();
-	this.playerimage.src = "images/player.png";
-	this.player = new sprite({
-    context: ctx,
-    width: 96,
-    height: 32,
-    numberOfFrames: 3,
-    ticksPerFrame: 1,
-    image: this.playerimage
-});
+	this.player = new Player(ctx);
 }
 
 Game.prototype.gameLoop = function(e){
-	game.player.update();
-	game.player.render();
+	game.now = Date.now();
+	if((game.then + 100) < game.now){
+		game.player.update(e);
+		game.player.draw();
+		game.then = Date.now();
+	}
 	window.requestAnimationFrame(game.gameLoop);
 }
 

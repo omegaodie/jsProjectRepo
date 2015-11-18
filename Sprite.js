@@ -34,8 +34,6 @@ function sprite (options) {
         // If the current frame index is in range
         if (frameIndex < numberOfFrames - 1) {  
              // Go to the next frame
-            console.log(frameIndex);
-            console.log(numberOfFrames);
             frameIndex += 1;
           } else {
                 frameIndex = 0;
